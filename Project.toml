@@ -1,0 +1,5 @@
+[deps]
+JLD2 = "033835bb-8acc-5ee8-8aae-3f567f8a3819"
+Kronecker = "2c470bb0-bcc8-11e8-3dad-c9649493f05e"
+OpenQuantumTools = "e429f160-8886-11e9-20cb-0dbe84e78965"
+SparseArrays = "2f01184e-e22b-5df5-ae63-d93ebab69eaf"
