@@ -44,12 +44,11 @@ function construct_dd_circuit(
     # free evolution Hamiltonian
     H = SparseHamiltonian([(s) -> 1.0], [H_mat], unit=:h)
 
-    # add T1 noise
-    γ1 = 1/T1
-    # relaxation is now σ₊
-    spσ₊ = sparse(σ₊)
-    lind_t1 = [Lindblad(γ1, single_clause([spσ₊], [i], 1, nqubit)) for i in 1:nqubit]
-    # dephasing is now σx
+    # relaxation in Pauli_x basis
+    γ1 = 1 / T1
+    spσ₋ = sparse((σz + im*σy)/2)
+    lind_t1 = [Lindblad(γ1, single_clause([spσ₋], [i], 1, nqubit)) for i in 1:nqubit]
+    # dephasing in Pauli_x basis
     γ2 = 1/T2
     lind_t2 = [Lindblad(γ2, single_clause([spσx], [i], 1, nqubit)) for i in 1:nqubit]
 
